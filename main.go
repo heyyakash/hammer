@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"log"
 	"sync"
+	"time"
 
 	"github.com/heyyakash/hammer/pkg"
 )
@@ -24,7 +24,7 @@ func main() {
 	flag.IntVar(&timeout, "t", 20, "Request timeout")
 	flag.Parse()
 
-	responseTime := make(chan float64, requests)
+	responseTime := make(chan time.Duration, requests)
 	var requestsPerGoRoutine int = requests / concurrency
 
 	for c := 1; c <= concurrency; c++ {
@@ -39,9 +39,6 @@ func main() {
 		close(responseTime)
 	}()
 
-	// var durations []float64
-	for t := range responseTime {
-		log.Print(t, "\n")
-	}
+	pkg.CalculateResults(responseTime)
 
 }

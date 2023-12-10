@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func MakeRequests(url string, timeout int, wg *sync.WaitGroup, responseTime chan<- float64, limit int) {
+func MakeRequests(url string, timeout int, wg *sync.WaitGroup, responseTime chan<- time.Duration, limit int) {
 	defer wg.Done()
 
 	client := http.Client{
@@ -21,7 +21,8 @@ func MakeRequests(url string, timeout int, wg *sync.WaitGroup, responseTime chan
 			log.Println("ran intp error", err)
 		}
 		res.Body.Close()
-		responseTime <- float64(time.Since(startTime))
+		duration := time.Since(startTime)
+		responseTime <- duration
 	}
 
 }
