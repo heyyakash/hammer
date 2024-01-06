@@ -27,4 +27,7 @@ Hammer is a simple HTTP load testing tool designed to help you test the performa
 # Future Plans
 1. Add load-testing for POST, UPDATE routes as well (Currently only supporting GET request)
 
+# Contributing
+This project has an MIT license, so feel free to contribute
+
 Now you're ready to swing the Hammer and unleash the power of load testing! 💪🚀
