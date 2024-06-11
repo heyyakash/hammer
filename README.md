@@ -11,7 +11,7 @@ Hammer is a simple HTTP load testing tool designed to help you test the performa
 
 ## Getting Started 🔨
 1. Clone the Hammer repository.
-2. Run `go build` to build the executable.
+2. Run `go build -o ./hammer` to build the executable.
 3. Run the executable with your desired configuration.
 
 ```bash
